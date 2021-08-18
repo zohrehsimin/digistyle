@@ -44,14 +44,14 @@ public class App {
                         Document doc = Jsoup.connect(link).get();
                         Elements products = doc.select(".c-main");
                         for (Element product : products) {
-
+                            digiStyle.productBrand = product.select(".c-product__details-title").text().trim();
                             digiStyle.productOriginalPrice = product.select(".c-price-container--quick-view-price-original").attr("data-price-value").trim();
                             digiStyle.productName = product.select(".c-product__details-subtitle").text().replace("لیست فروشندگان این محصول", "").trim();
                             digiStyle.productDiscountAmount = product.select(".c-price-container--quick-view-price-discount").attr("data-price-value").trim();
                             digiStyle.productFinalPrice = product.select(".c-price-container--quick-view-price-final").attr("data-price-value").trim();
                             digiStyle.productDiscountPercentage = product.select(".c-product__image-gallery-discount").text().trim();
-                            digiStyle.productBreadcrumb = product.select(".c-breadcrumb li span").text().replace("بازگشت یه نتایج", "").trim();
-                            digiStyle.productBrand = product.select(".c-product__details-title").text().trim();
+                            digiStyle.productBreadcrumb = product.select(".c-breadcrumb li span").text().replace("بازگشت به نتایج", "").trim();
+
 
                             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
